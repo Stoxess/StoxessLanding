@@ -8,16 +8,20 @@
     <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
-        body {
+        html, body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+        }
+        
+        body {
             background-image: url('logo.jpg');
-            /* Changed to contain so it never cuts off your text */
-            background-size: contain;
+            /* 'cover' forces the image to fill the screen edge-to-edge */
+            background-size: cover; 
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #03080c; /* A very dark blue/black to blend with your image's background */
         }
     </style>
 </head>
