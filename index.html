@@ -8,23 +8,28 @@
     <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
-        html, body {
+        body, html {
             margin: 0;
             padding: 0;
-            width: 100%;
+            background-color: #000000; /* Fills the background with black */
             height: 100%;
-            background-color: #000000;
+            /* Allows horizontal scrolling but locks vertical scrolling */
+            overflow-x: auto;
+            overflow-y: hidden;
+            /* Prevents the pull-to-refresh on some mobile browsers from messing up the swipe */
+            overscroll-behavior-y: none; 
         }
         
-        body {
-            background-image: url('logo.jpg');
-            /* 'cover' forces the image to fill the screen edge-to-edge */
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat;
+        .splash-image {
+            height: 100vh; /* Snaps the image height perfectly to the screen height */
+            width: auto;   /* Lets the width scale naturally, creating the scroll */
+            display: block;
         }
     </style>
 </head>
 <body>
+
+    <img src="logo.jpg" alt="Stoxess" class="splash-image">
+
 </body>
 </html>
