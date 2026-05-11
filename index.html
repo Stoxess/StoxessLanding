@@ -8,19 +8,97 @@
     <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
+            background-color: #000000;
+            height: 100%;
+            /* Centers the image wrapper while allowing horizontal scroll on small screens */
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            overscroll-behavior-y: none;
+        }
+        
+        .image-wrapper {
+            position: relative;
             height: 100vh;
-            /* Displays your image edge-to-edge with no repeating */
-            background-image: url('logo.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #000000; /* Fills any edge gaps with black */
+            /* Ensures the wrapper tightly hugs the image so positioning is accurate */
+            display: inline-block; 
+        }
+
+        .splash-image {
+            height: 100vh;
+            width: auto;
+            display: block;
+        }
+
+        /* The overlay container perfectly centered horizontally */
+        .email-capture-container {
+            position: absolute;
+            bottom: 22%; /* TWEAK THIS NUMBER to move it up or down over your image */
+            left: 50%;
+            transform: translateX(-50%);
+            
+            /* Design matching the 3D aesthetic */
+            display: flex;
+            align-items: center;
+            background: rgba(13, 25, 33, 0.85);
+            backdrop-filter: blur(4px); /* Adds a premium glass-like blur over the background */
+            border: 1px solid rgba(82, 149, 139, 0.4);
+            border-radius: 40px;
+            padding: 5px;
+            width: 100%;
+            max-width: 480px; /* Slightly wider to cover the baked-in design */
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(82, 149, 139, 0.1);
+        }
+
+        .email-capture-container input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            padding: 14px 24px;
+            font-size: 1rem;
+            outline: none;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .email-capture-container input::placeholder {
+            color: #6a7c87;
+        }
+
+        .email-capture-container button {
+            background: linear-gradient(90deg, #183e45, #296055);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 35px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .email-capture-container button:hover {
+            background: linear-gradient(90deg, #215159, #357a6c);
+            box-shadow: 0 0 15px rgba(41, 96, 85, 0.5);
         }
     </style>
 </head>
 <body>
-    </body>
+
+    <div class="image-wrapper">
+        <img src="logo.jpg" alt="Stoxess" class="splash-image">
+        
+        <form class="email-capture-container" onsubmit="event.preventDefault(); alert('Email captured!');">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Launch Alert</button>
+        </form>
+    </div>
+
+</body>
 </html>
